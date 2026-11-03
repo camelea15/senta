@@ -1,0 +1,6 @@
+{
+  "name": "SENTA.DZ | Haute Parfumerie Algérie",
+  "description": "Boutique en ligne exclusive de haute parfumerie en Algérie. Découvrez votre parfum signature avec livraison 58 wilayas et paiement à la livraison.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
