@@ -66,6 +66,16 @@ function Storefront() {
 
   useEffect(() => {
     fetchProducts();
+    if (window.location.hash === '#admin' || window.location.hash === '#gestion') {
+      setIsAdminOpen(true);
+    }
+    const handleHashChange = () => {
+      if (window.location.hash === '#admin' || window.location.hash === '#gestion') {
+        setIsAdminOpen(true);
+      }
+    };
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
   // Filter & Sort Logic
