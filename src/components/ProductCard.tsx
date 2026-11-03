@@ -3,6 +3,7 @@ import { Product } from '../types';
 import { useLanguage } from '../context/LanguageContext';
 import { useCart } from '../context/CartContext';
 import { ShoppingBag, Eye, Check } from 'lucide-react';
+import { resolveProductImage } from '../assets/images';
 
 interface ProductCardProps {
   product: Product;
@@ -24,6 +25,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onSelect }) =
   }[product.category];
 
   const inCartItem = cart.find((item) => item.product.id === product.id);
+  const imageUrl = resolveProductImage(product.image, product.id);
 
   return (
     <div className="group relative bg-[#1B1612] border border-[#C69A55]/20 hover:border-[#C69A55]/60 rounded-sm overflow-hidden flex flex-col transition-all duration-300 hover:shadow-2xl hover:shadow-[#C69A55]/10 hover:-translate-y-1">
@@ -33,7 +35,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onSelect }) =
         className="relative aspect-[4/3] w-full overflow-hidden bg-[#120E0B] cursor-pointer"
       >
         <img
-          src={product.image}
+          src={imageUrl}
           alt={name}
           loading="lazy"
           className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"

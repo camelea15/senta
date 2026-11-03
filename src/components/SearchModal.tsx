@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Product } from '../types';
 import { useLanguage } from '../context/LanguageContext';
 import { Search, X, ShoppingBag } from 'lucide-react';
+import { resolveProductImage } from '../assets/images';
 
 interface SearchModalProps {
   isOpen: boolean;
@@ -100,7 +101,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                 >
                   <div className="flex items-center gap-3 min-w-0">
                     <img
-                      src={p.image}
+                      src={resolveProductImage(p.image, p.id)}
                       alt={pName}
                       className="w-12 h-12 object-cover rounded bg-[#110E0B] border border-[#C69A55]/20 shrink-0"
                       referrerPolicy="no-referrer"

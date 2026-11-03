@@ -3,6 +3,7 @@ import { Product } from '../types';
 import { useLanguage } from '../context/LanguageContext';
 import { useCart } from '../context/CartContext';
 import { X, ShoppingBag, ShieldCheck, Truck, Sparkles, Check } from 'lucide-react';
+import { resolveProductImage } from '../assets/images';
 
 interface ProductModalProps {
   product: Product | null;
@@ -73,7 +74,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({
           {/* Gallery / Product Image */}
           <div className="relative bg-[#120E0B] p-6 sm:p-8 flex items-center justify-center min-h-[340px] md:min-h-[480px]">
             <img
-              src={product.image}
+              src={resolveProductImage(product.image, product.id)}
               alt={name}
               className="max-h-[380px] w-auto object-contain rounded shadow-2xl transition-transform duration-500 hover:scale-105"
               referrerPolicy="no-referrer"
@@ -228,7 +229,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({
                     className="flex items-center gap-3 p-2.5 rounded bg-[#1A1511] border border-[#C69A55]/15 hover:border-[#C69A55]/50 transition-colors cursor-pointer group"
                   >
                     <img
-                      src={r.image}
+                      src={resolveProductImage(r.image, r.id)}
                       alt={rName}
                       className="w-14 h-14 object-cover rounded bg-[#110E0B]"
                       referrerPolicy="no-referrer"

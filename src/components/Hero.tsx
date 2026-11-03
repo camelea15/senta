@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { Sparkles, ArrowDown } from 'lucide-react';
+import { heroImage } from '../assets/images';
 
 export const Hero: React.FC = () => {
   const { t, language } = useLanguage();
@@ -17,7 +18,7 @@ export const Hero: React.FC = () => {
       {/* Background Image with Depth & Scrim */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/src/assets/images/hero_senta_luxury_1793742298568.jpg"
+          src={heroImage}
           alt="SENTA.DZ Haute Parfumerie Algérie"
           className="w-full h-full object-cover object-center scale-105 transform motion-safe:animate-subtleZoom"
           referrerPolicy="no-referrer"

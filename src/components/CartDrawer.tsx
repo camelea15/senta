@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { useCart } from '../context/CartContext';
 import { X, Trash2, ShoppingBag, ArrowRight, ArrowLeft, Tag, Sparkles } from 'lucide-react';
+import { resolveProductImage } from '../assets/images';
 
 interface CartDrawerProps {
   onProceedToCheckout: (discountAmount: number, promoCode?: string) => void;
@@ -140,7 +141,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                 return (
                   <div key={item.product.id} className="py-4 flex gap-4 items-center">
                     <img
-                      src={item.product.image}
+                      src={resolveProductImage(item.product.image, item.product.id)}
                       alt={pName}
                       className="w-18 h-18 object-cover rounded bg-[#110E0B] border border-[#C69A55]/20 shrink-0"
                       referrerPolicy="no-referrer"

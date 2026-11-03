@@ -20,6 +20,7 @@ import {
   Search,
   KeyRound,
 } from 'lucide-react';
+import { resolveProductImage } from '../assets/images';
 
 interface AdminModalProps {
   isOpen: boolean;
@@ -904,7 +905,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({ isOpen, onClose, onProdu
                     {products.map((p) => (
                       <div key={p.id} className="p-3 bg-[#1B1612] border border-[#C69A55]/20 rounded flex gap-3 items-center">
                         <img
-                          src={p.image}
+                          src={resolveProductImage(p.image, p.id)}
                           alt={p.name}
                           className="w-16 h-16 object-cover rounded bg-[#110E0B] shrink-0"
                           referrerPolicy="no-referrer"

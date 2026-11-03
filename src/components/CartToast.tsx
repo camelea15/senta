@@ -2,6 +2,7 @@ import React from 'react';
 import { useCart } from '../context/CartContext';
 import { useLanguage } from '../context/LanguageContext';
 import { CheckCircle2, ShoppingBag, X } from 'lucide-react';
+import { resolveProductImage } from '../assets/images';
 
 export const CartToast: React.FC = () => {
   const { addedToastProduct, dismissToast, setIsCartOpen } = useCart();
@@ -15,7 +16,7 @@ export const CartToast: React.FC = () => {
   return (
     <div className="fixed bottom-6 right-6 z-50 max-w-sm w-full bg-[#17130F] border border-[#C69A55] rounded shadow-2xl p-4 flex items-center gap-3 animate-slideUp">
       <img
-        src={addedToastProduct.image}
+        src={resolveProductImage(addedToastProduct.image, addedToastProduct.id)}
         alt={name}
         className="w-12 h-12 object-cover rounded bg-[#110E0B] border border-[#C69A55]/30 shrink-0"
         referrerPolicy="no-referrer"

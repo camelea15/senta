@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { Sparkles, Award, MapPin } from 'lucide-react';
+import { santalMystiqueImage } from '../assets/images';
 
 export const AboutSection: React.FC = () => {
   const { t } = useLanguage();
@@ -68,7 +69,7 @@ export const AboutSection: React.FC = () => {
             <div className="relative mx-auto max-w-md lg:max-w-none">
               <div className="aspect-[4/5] rounded-sm overflow-hidden border border-[#C69A55]/30 shadow-2xl bg-[#110E0B]">
                 <img
-                  src="/src/assets/images/perfume_santal_mystique_1793742305628.jpg"
+                  src={santalMystiqueImage}
                   alt="SENTA.DZ Art Olfactif"
                   className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105"
                   referrerPolicy="no-referrer"

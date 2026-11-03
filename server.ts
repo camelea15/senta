@@ -20,17 +20,23 @@ async function startServer() {
   // API router
   app.use('/api', apiRouter);
 
-  // Serve uploaded or generated assets
+  // Serve static assets and public files
   app.use('/src/assets', express.static(path.resolve(__dirname, 'src/assets')));
+  app.use('/public', express.static(path.resolve(__dirname, 'public')));
 
   if (!isProd) {
     // Development mode with Vite middleware
+    console.log('Initializing Vite development middleware...');
     const { createServer } = await import('vite');
     const vite = await createServer({
-      server: { middlewareMode: true },
+      server: {
+        middlewareMode: true,
+        hmr: process.env.DISABLE_HMR !== 'true',
+      },
       appType: 'spa',
     });
     app.use(vite.middlewares);
+    console.log('Vite development middleware attached successfully.');
   } else {
     // Production static files
     app.use(express.static(path.resolve(__dirname, 'dist')));
