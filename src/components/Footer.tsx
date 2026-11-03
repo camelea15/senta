@@ -112,7 +112,10 @@ export const Footer: React.FC<FooterProps> = ({ onOpenTrackOrder, onOpenAdmin })
               </li>
               <li>
                 <button
-                  onClick={onOpenAdmin}
+                  onClick={() => {
+                    window.history.pushState({}, '', '/admin');
+                    window.dispatchEvent(new PopStateEvent('popstate'));
+                  }}
                   className="text-[#C69A55]/70 hover:text-[#C69A55] transition-colors text-left"
                 >
                   {t('navAdmin')}

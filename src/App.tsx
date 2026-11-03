@@ -23,6 +23,7 @@ import { AboutSection } from './components/AboutSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { AdminModal } from './components/AdminModal';
+import { AdminPage } from './components/AdminPage';
 import { CartToast } from './components/CartToast';
 import { Sparkles, SlidersHorizontal, RefreshCw } from 'lucide-react';
 
@@ -299,10 +300,22 @@ function Storefront() {
 }
 
 export default function App() {
+  const [isAdminRoute, setIsAdminRoute] = useState(() => {
+    return window.location.pathname.startsWith('/admin') || window.location.hash.startsWith('#admin');
+  });
+
+  useEffect(() => {
+    const handlePopState = () => {
+      setIsAdminRoute(window.location.pathname.startsWith('/admin') || window.location.hash.startsWith('#admin'));
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
   return (
     <LanguageProvider>
       <CartProvider>
-        <Storefront />
+        {isAdminRoute ? <AdminPage /> : <Storefront />}
       </CartProvider>
     </LanguageProvider>
   );
